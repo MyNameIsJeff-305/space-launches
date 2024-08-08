@@ -1,0 +1,86 @@
+---
+import "../styles/global.css";
+import HeaderButton from "./HeaderButton.astro";
+---
+
+<header class="py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6">
+  <div class="mx-auto text-center mb-8 lg:mb-16">
+    <h2
+      class="font-custom mb-4 text-5xl tracking-tight font-extrabold text-white"
+    >
+      SpaceX Launches 🚀
+    </h2>
+  </div>
+  <p class="font-custom text-gray-500 sm:text-xl dark:text-gray-400">
+    Welcome to SpaceX Launches 🚀! Here you can find all the information about
+    SpaceX launches.
+  </p>
+
+  <nav
+    class="flex flex-col items-center justify-between w-full text-center md:flex-row"
+  >
+    <HeaderButton class="text-white" href="/">
+      <svg
+        slot="before"
+        class="bg-white rounded-full p-1"
+        width="44"
+        height="44"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#2c3e50"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path
+          d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3"
+        ></path>
+        <path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3"></path>
+        <path d="M15 9m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+      </svg>
+      <span slot="after"> Latest</span>
+    </HeaderButton>
+    <HeaderButton class="text-white" href="/about">
+      <svg
+        class="bg-white rounded-full p-1"
+        slot="before"
+        width="44"
+        height="44"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#2c3e50"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M20.984 12.535a9 9 0 1 0 -8.431 8.448"></path>
+        <path d="M12 7v5l3 3"></path>
+        <path d="M19 16v6"></path>
+        <path d="M22 19l-3 3l-3 -3"></path>
+      </svg>
+      <span slot="after">Oldest</span>
+    </HeaderButton>
+    <HeaderButton class="text-white" href="/about">
+      <svg
+        slot="before"
+        width="44"
+        height="44"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#2c3e50"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path
+          d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1 -19.995 .324l-.005 -.324l.004 -.28c.148 -5.393 4.566 -9.72 9.996 -9.72zm0 9h-1l-.117 .007a1 1 0 0 0 0 1.986l.117 .007v3l.007 .117a1 1 0 0 0 .876 .876l.117 .007h1l.117 -.007a1 1 0 0 0 .876 -.876l.007 -.117l-.007 -.117a1 1 0 0 0 -.764 -.857l-.112 -.02l-.117 -.006v-3l-.007 -.117a1 1 0 0 0 -.876 -.876l-.117 -.007zm.01 -3l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z"
+          stroke-width="0"
+          fill="currentColor"></path>
+      </svg>
+      <span slot="after">About</span>
+    </HeaderButton>
+  </nav>
+</header>

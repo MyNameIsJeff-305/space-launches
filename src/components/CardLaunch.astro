@@ -1,0 +1,13 @@
+---
+interface Props {
+    id: string;
+    name: string;
+    img: string;
+    success: boolean;
+    flightNumber: number;
+    details: string;
+}
+
+const {success, img, name, flightNumber, details, id} = props;
+const successText = success ? 'Success' : 'Failure';
+---

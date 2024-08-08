@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Space-X';
+    src: url('public/fonts/SpaceX\ FREE\ FOR\ PERSONAL\ USE.ttf') format('ttf'),
+        url('public/fonts/SpaceX\ FREE\ FOR\ PERSONAL\ USE.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Space-X';
+    src: url('public/fonts/SpaceX\ FREE\ FOR\ PERSONAL\ USE.ttf') format('ttf'),
+        url('public/fonts/SpaceX\ FREE\ FOR\ PERSONAL\ USE.ttf') format('ttf');
+    font-weight: bold;
+    font-style: normal;
+}
