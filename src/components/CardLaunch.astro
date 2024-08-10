@@ -21,10 +21,7 @@ const successText = success ? "Success" : "Failure";
     <img class="mb-5 rounded-lg" src={img} alt={`Patch for launch ${id}`} />
   </picture>
 
-  <header class="p-4 flex-grow flex flex-row items-center justify-between">
-    <h2 class="my-2 text-2xl font-bold tracking-tight text-white">
-      Launch # {flightNumber}
-    </h2>
+  <header class="p-4 flex-grow flex flex-col items-start justify-between">
     <span
       class:list={[
         `text-xs font-semibold mr-2 px-2.5 py-0.5 rounded `,
@@ -35,14 +32,9 @@ const successText = success ? "Success" : "Failure";
       ]}
     >
       {successText}
-
-      <!-- <p class="mb-4 font-light text-gray-400">
-        {
-          details !== null && details.length > 40
-            ? details.slice(0, 100) + "..."
-            : details
-        }
-      </p> -->
     </span>
+    <h2 class="my-2 text-xl font-bold tracking-tight text-white">
+      {name}
+    </h2>
   </header>
 </a>

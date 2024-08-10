@@ -9,10 +9,29 @@ import Layout from "../layouts/Layout.astro";
       src="https://media.tenor.com/8OPCLlcaQoMAAAAj/cartoon-xolo.gif"
       alt="404"
     />
-    <h1 class="text-white text-6xl text-center">
+    <h1 class="text-white text-4xl text-center mt-10 mb-10">
       Oops... This page does not exits
     </h1>
     <HeaderButton class="text-white" href="/">
+      <span slot="before">
+        <svg
+          slot="before"
+          class="bg-white rounded-full p-1"
+          width="30"
+          height="30"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#2c3e50"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M5 12l-2 0l9 -9l9 9l-2 0"></path><path
+            d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path><path
+            d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></svg
+        >
+      </span>
       <span slot="after">Go back to home</span>
+    </HeaderButton>
   </div>
 </Layout>

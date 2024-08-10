@@ -1,30 +1,31 @@
 ---
 import "../styles/global.css";
+
 import HeaderButton from "./HeaderButton.astro";
 ---
 
-<header class="py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6">
-  <div class="mx-auto text-center mb-8 lg:mb-16">
+<header class=" flex flex-col py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6 items-center">
+  <div class="mx-auto text-center mb-5 lg:mb-8">
     <h2
-      class="font-custom mb-4 text-5xl tracking-tight font-extrabold text-white"
+      class="font-custom mb-4 text-5xl text-center tracking-tight font-extrabold text-white"
     >
       SpaceX Launches 🚀
     </h2>
   </div>
-  <p class="font-custom text-gray-500 sm:text-xl dark:text-gray-400">
+  <p class="font-custom text-center text-gray-500 sm:text-xl dark:text-gray-400">
     Welcome to SpaceX Launches 🚀! Here you can find all the information about
     SpaceX launches.
   </p>
 
   <nav
-    class="flex flex-col items-center justify-between w-full text-center md:flex-row"
+    class="flex flex-col items-center justify-between w-full text-center md:flex-row mt-5"
   >
     <HeaderButton class="text-white" href="/latest">
       <svg
         slot="before"
         class="bg-white rounded-full p-1"
-        width="44"
-        height="44"
+        width="30"
+        height="30"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="#2c3e50"
@@ -45,8 +46,8 @@ import HeaderButton from "./HeaderButton.astro";
       <svg
         class="bg-white rounded-full p-1"
         slot="before"
-        width="44"
-        height="44"
+        width="30"
+        height="30"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="#2c3e50"
@@ -65,8 +66,8 @@ import HeaderButton from "./HeaderButton.astro";
     <HeaderButton class="text-white" href="/oldest">
       <svg
         slot="before"
-        width="44"
-        height="44"
+        width="30"
+        height="30"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="#2c3e50"

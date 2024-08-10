@@ -1,0 +1,37 @@
+---
+import type { GetStaticPaths } from "astro";
+import type { APISpaceXResponse, Doc } from "../../types/api";
+import { getLatestLaunches, getLaunchById } from "../../lib/spacex";
+import Layout from "../../layouts/Layout.astro";
+
+const { id } = Astro.params;
+
+let launch: Doc | null = null;
+
+if (id) {
+    launch = await getLaunchById(id);
+}
+
+console.log(id);
+
+export async function getStaticPaths() {
+    const launches = await getLatestLaunches();
+
+    return launches.map((launch) => ({
+        params: {
+            id: launch.id,
+        },
+    }));
+}
+---
+
+<Layout title={launch?.name ?? ""} />
+<article class="flex gap-y-4 flex-col ml-10 mr-10">
+    <img
+        class="w-52 h-auto"
+        src={launch?.links.patch.small}
+        alt={launch?.name}
+    />
+    <h1 class="text-4xl text-white font-bold">{launch?.name}</h1>
+    <p class="text-lg">{launch?.details}</p>
+</article>
