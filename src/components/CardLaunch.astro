@@ -3,7 +3,7 @@ interface Props {
   id: string;
   name: string;
   img: string;
-  success: boolean;
+  success: boolean | null;
   flightNumber: number;
   details: string;
 }
@@ -21,21 +21,28 @@ const successText = success ? "Success" : "Failure";
     <img class="mb-5 rounded-lg" src={img} alt={`Patch for launch ${id}`} />
   </picture>
 
-  <header class="p-4 flex-grow">
-    <span class={`text-xs font-semibold mr-2 px-2.5 py-0.5 rounded `}>
-      Por Hacer
-
-      <h2 class="my-2 text-2xl font-bold tracking-tight text-white">
-        Launch # {flightNumber}
-      </h2>
-
-      <p class="mb-4 font-light text-gray-400">
+  <header class="p-4 flex-grow flex flex-row items-center justify-between">
+    <h2 class="my-2 text-2xl font-bold tracking-tight text-white">
+      Launch # {flightNumber}
+    </h2>
+    <span
+      class:list={[
+        `text-xs font-semibold mr-2 px-2.5 py-0.5 rounded `,
         {
-          details !== null && details.length > 100
+          "bg-green-400 text-green-900": success,
+          "bg-red-400 text-red-900": !success,
+        },
+      ]}
+    >
+      {successText}
+
+      <!-- <p class="mb-4 font-light text-gray-400">
+        {
+          details !== null && details.length > 40
             ? details.slice(0, 100) + "..."
             : details
         }
-      </p>
+      </p> -->
     </span>
   </header>
 </a>

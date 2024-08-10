@@ -1,0 +1,18 @@
+---
+import HeaderButton from "../components/HeaderButton.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 Not Found">
+  <div class="flex flex-col justify-center items-center align-middle w-full">
+    <img
+      src="https://media.tenor.com/8OPCLlcaQoMAAAAj/cartoon-xolo.gif"
+      alt="404"
+    />
+    <h1 class="text-white text-6xl text-center">
+      Oops... This page does not exits
+    </h1>
+    <HeaderButton class="text-white" href="/">
+      <span slot="after">Go back to home</span>
+  </div>
+</Layout>
