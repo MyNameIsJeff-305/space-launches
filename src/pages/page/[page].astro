@@ -28,7 +28,7 @@ export async function getStaticPaths() {
         >
             {
                 launches.map((page) => (
-                    <HeaderButton href={`${page}`}>
+                    <HeaderButton href={`/page/${page}`}>
                         <span class="text-[14px] object-contain" slot="after">
                             {page}
                         </span>
