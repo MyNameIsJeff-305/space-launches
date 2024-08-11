@@ -4,7 +4,9 @@ import Launches from "../components/Launches.astro";
 ---
 
 <Layout title="Welcome to SpaceX Launches🚀">
-    <main class="flex flex-col gap-y-8 justify-center items-center w-[50%]">
-        <Launches page={-1} order="asc"/>
+    <main class="flex flex-col w-[80%] gap-y-8 justify-center items-center content-center">
+        <section>
+            <Launches page={-1} order="asc" />
+        </section>
     </main>
 </Layout>

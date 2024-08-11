@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 
     return launches.map((launch) => ({
         params: {
-            page: launch.toString(),
+            page: `${launch}`,
         },
     }));
 }
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 <Layout title={`SpaceX Launches - Page ${page}`}>
     <main class="flex flex-col gap-y-8 justify-center items-center">
         <section
-            class="grid grid-cols-[repeat(auto-fill,minmax(40px,1fr))] gap-4 justify-stretch w-[45%]"
+            class="flex flex-row flex-wrap gap-4 w-[80%] content-center align-middle justify-center mt-5"
         >
             {
                 launches.map((page) => (
