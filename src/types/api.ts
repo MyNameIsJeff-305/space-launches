@@ -1,4 +1,9 @@
 export interface APISpaceXResponse {
+name: string;
+links: any;
+success: boolean | null;
+flight_number: number;
+details: string;
 id: any;
   readonly docs:          Doc[];
   readonly totalDocs:     number;

@@ -1,0 +1,43 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { getAmountOfPages } from "../../../lib/spacex";
+import Launches from "../../../components/Launches.astro";
+import HeaderButton from "../../../components/HeaderButton.astro";
+
+const { page } = Astro.params;
+
+const amountOfPages = await getAmountOfPages();
+const launches = Array.from({ length: amountOfPages }, (_, i) => i + 1);
+
+export async function getStaticPaths() {
+    const amountOfPages = await getAmountOfPages();
+    const launches = Array.from({ length: amountOfPages }, (_, i) => i + 1);
+
+    return launches.map((launch) => ({
+        params: {
+            page: launch.toString(),
+        },
+    }));
+}
+---
+
+<Layout title={`SpaceX Launches - Page ${page}`}>
+    <main class="flex flex-col gap-y-8 justify-center items-center">
+        <section
+            class="grid grid-cols-[repeat(auto-fill,minmax(40px,1fr))] gap-4 justify-stretch w-[45%]"
+        >
+            {
+                launches.map((page) => (
+                    <HeaderButton href={`${page}`}>
+                        <span class="text-[14px] object-contain" slot="after">
+                            {page}
+                        </span>
+                    </HeaderButton>
+                ))
+            }
+        </section>
+        <section>
+            <Launches page={Number(page)} order="" />
+        </section>
+    </main>
+</Layout>

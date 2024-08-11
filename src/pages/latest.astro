@@ -1,0 +1,10 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Launches from "../components/Launches.astro";
+---
+
+<Layout title="Welcome to SpaceX Launches🚀">
+    <main class="flex flex-col gap-y-8 justify-center items-center w-[50%]">
+        <Launches page={-1} order="desc"/>
+    </main>
+</Layout>

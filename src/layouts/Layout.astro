@@ -14,14 +14,14 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="bg-gray-900 min-h-screen pb-32">
+  <body class=" flex flex-col bg-gray-900 min-h-screen items-center content-center justify-center">
     <Header />
-    <main class="max-w-5xs px-4 m-auto"></main>
+    <!-- <main class=" flex flex-col justify-center content-center max-w-5xs m-auto"></main> -->
     <slot />
   </body>
 </html>

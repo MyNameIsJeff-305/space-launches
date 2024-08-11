@@ -1,0 +1,56 @@
+---
+import type { Doc } from "../../types/api";
+import { getLaunchesOrderedBy, getLaunchById } from "../../lib/spacex";
+import Layout from "../../layouts/Layout.astro";
+
+const { id } = Astro.params;
+
+let launch: Doc | null = null;
+
+if (id) {
+    launch = await getLaunchById(id);
+}
+
+// console.log(launch);
+
+export async function getStaticPaths() {
+    const launches = await getLaunchesOrderedBy('asc');
+
+    return launches.map((launch) => ({
+        params: {
+            id: launch.id,
+        },
+    }));
+}
+
+const success = launch?.success ?? null;
+const successText = success ? "Success" : "Failure";
+---
+
+<Layout title={launch?.name ?? ""} />
+<article
+    class="flex flex-col py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6 items-start"
+>
+    <div class="w-full flex flex-row gap-8 items-center mx-auto">
+        <img
+            class="w-52 h-auto"
+            src={launch?.links.patch.small}
+            alt={launch?.name}
+        />
+        <div class="w-15">
+            <h1 class="text-4xl text-white font-bold">{launch?.name}</h1>
+            <span
+                class:list={[
+                    `text-xs font-semibold mr-2 px-2.5 py-0.5 rounded `,
+                    {
+                        "bg-green-400 text-green-900": success,
+                        "bg-red-400 text-red-900": !success,
+                    },
+                ]}
+            >
+                {successText}
+            </span>
+            <p class="text-lg">{launch?.details}</p>
+        </div>
+    </div>
+</article>

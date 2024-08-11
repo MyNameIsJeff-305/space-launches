@@ -13,15 +13,15 @@ const successText = success ? "Success" : "Failure";
 ---
 
 <a
-  href={`/launch/${id}`}
+  href={`/launches/${id}`}
   class="aspect-w-1 aspect-h-1 rounded-lg border shadow-md bg-gray-800 border-gray-700
-    hover:scale-105 hover:bg-gray-700 hover:border-gray-500 transition flex flex-col"
+    hover:scale-105 hover:bg-gray-700 hover:border-gray-500 transition flex flex-col justify-between"
 >
-  <picture class="flex justify-center p-4">
-    <img class="mb-5 rounded-lg" src={img} alt={`Patch for launch ${id}`} />
+  <picture class="flex justify-center p-4 items-center">
+    <img class="mb-5 rounded-lg items-center" src={img} alt={`Patch for launch ${id}`} />
   </picture>
 
-  <header class="p-4 flex-grow flex flex-col items-start justify-between">
+  <header class="p-4 flex-grow flex flex-col items-start justify-center">
     <span
       class:list={[
         `text-xs font-semibold mr-2 px-2.5 py-0.5 rounded `,

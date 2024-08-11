@@ -1,11 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import Launches from "../components/Launches.astro";
+
+import { getAmountOfPages } from "../lib/spacex";
+import HeaderButton from "../components/HeaderButton.astro";
+
+const amountOfPages = await getAmountOfPages();
+const arrOfPages = Array.from({ length: amountOfPages }, (_, i) => i + 1);
 ---
 
 <Layout title="Welcome to SpaceX Launches🚀">
-  <main class="m-8">
-    <Launches />
+  <main class="flex flex-col gap-y-8 justify-center items-center content-center">
+    <section
+      class="flex flex-row flex-wrap gap-4 w-[80%] content-center align-middle justify-center mt-5"
+    >
+      {
+        arrOfPages.map((page) => (
+          <HeaderButton href={`launches/page/${page}`}>
+            <span class="text-[14px] object-contain" slot="after">
+              {page}
+            </span>
+          </HeaderButton>
+        ))
+      }
+    </section>
+    <Launches page={1} order="" />
   </main>
 </Layout>

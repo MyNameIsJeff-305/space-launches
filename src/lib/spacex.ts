@@ -7,7 +7,7 @@ export const getLaunchById = async (id: string) => {
     return launch;
 }
 
-export const getLatestLaunches = async () => {
+export const getLaunchesOrderedBy = async (order: string) => {
     const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
         method: "POST",
         headers: {
@@ -17,7 +17,7 @@ export const getLatestLaunches = async () => {
             query: {},
             options: {
                 sort: {
-                    date_unix: "asc",
+                    date_unix: order,
                 },
                 limit: 12,
             },
@@ -29,7 +29,28 @@ export const getLatestLaunches = async () => {
     return launches;
 }
 
-export const getAllLaunches = async (page = 1, size = 12): Promise<APISpaceXResponse[]> => {
+export const getAmountOfPages = async (): Promise<number> => {
+    const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            query: {},
+            options: {
+                sort: {
+                    date_unix: "asc",
+                },
+            },
+        }),
+    });
+
+    const { totalDocs } = (await res.json()) as { totalDocs: number };
+
+    return Math.ceil(totalDocs / 12);
+}
+
+export const getLaunchesByPage = async (page = 1): Promise<APISpaceXResponse[]> => {
     const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
         method: "POST",
         headers: {
@@ -42,7 +63,7 @@ export const getAllLaunches = async (page = 1, size = 12): Promise<APISpaceXResp
                     date_unix: "asc",
                 },
                 page: page,
-                limit: size,
+                limit: 12,
             },
         }),
     });
