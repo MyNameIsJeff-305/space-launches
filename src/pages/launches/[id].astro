@@ -1,7 +1,8 @@
 ---
 import type { Doc } from "../../types/api";
-import { getLaunchesOrderedBy, getLaunchById } from "../../lib/spacex";
+import { getLaunches, getLaunchById } from "../../lib/spacex";
 import Layout from "../../layouts/Layout.astro";
+import HeaderButton from "../../components/HeaderButton.astro";
 
 const { id } = Astro.params;
 
@@ -11,11 +12,13 @@ if (id) {
     launch = await getLaunchById(id);
 }
 
-// console.log(launch);
+let launches = await getLaunches();
+
+console.log(launches);
 
 export async function getStaticPaths() {
-    const launches = await getLaunchesOrderedBy('asc');
-
+    let launches = await getLaunches();
+    
     return launches.map((launch) => ({
         params: {
             id: launch.id,
@@ -29,11 +32,11 @@ const successText = success ? "Success" : "Failure";
 
 <Layout title={launch?.name ?? ""} />
 <article
-    class="flex flex-col py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6 items-start"
+    class="flex flex-col py-4 px-4 mx-auto max-w-xl lg:py-16 lg:px-6 items-start"
 >
-    <div class="w-full flex flex-row gap-8 items-center mx-auto">
+    <div class="w-[100%] flex flex-row gap-8 items-center mx-auto mb-6">
         <img
-            class="w-52 h-auto"
+            class="w-40 h-40"
             src={launch?.links.patch.small}
             alt={launch?.name}
         />
@@ -50,7 +53,119 @@ const successText = success ? "Success" : "Failure";
             >
                 {successText}
             </span>
-            <p class="text-lg">{launch?.details}</p>
         </div>
+    </div>
+    <p class="text-lg">{launch?.details}</p>
+    <picture>
+        { launch?.links.flickr.original[0]
+            ? (
+                <img
+                    class="w-full h-auto mt-8"
+                    src={launch?.links.flickr.original[0]}
+                    alt={launch?.name}
+                />
+            )
+            : (<> </>
+            )
+        }
+    </picture>
+    <div class="w-full mt-8">
+        {
+            launch?.links.wikipedia && (
+                <HeaderButton href={launch?.links.wikipedia}>
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        slot="before"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-wikipedia w-auto h-6"
+                    >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M3 4.984h2" />
+                        <path d="M8 4.984h2.5" />
+                        <path d="M14.5 4.984h2.5" />
+                        <path d="M22 4.984h-2" />
+                        <path d="M4 4.984l5.455 14.516l6.545 -14.516" />
+                        <path d="M9 4.984l6 14.516l6 -14.516" />
+                    </svg>
+                </HeaderButton>
+            )
+        }
+        {
+            launch?.links.webcast && (
+                <HeaderButton href={launch?.links.webcast}>
+                    <svg
+                        width="24"
+                        height="24"
+                        slot="before"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="icon icon-tabler icons-tabler-filled icon-tabler-brand-youtube w-auto h-6"
+                    >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M18 3a5 5 0 0 1 5 5v8a5 5 0 0 1 -5 5h-12a5 5 0 0 1 -5 -5v-8a5 5 0 0 1 5 -5zm-9 6v6a1 1 0 0 0 1.514 .857l5 -3a1 1 0 0 0 0 -1.714l-5 -3a1 1 0 0 0 -1.514 .857z" />
+                    </svg>
+                </HeaderButton>
+            )
+        }
+        {
+            launch?.links.article && (
+                <HeaderButton href={launch?.links.webcast}>
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        slot="before"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-news w-auto h-6"
+                    >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" />
+                        <>
+                            <path d="M8 8l4 0" />
+                            <path d="M8 12l4 0" />
+                            <path d="M8 16l4 0" />
+                        </>
+                    </svg>
+                </HeaderButton>
+            )
+        }
+        {
+            launch?.links.presskit && (
+                <HeaderButton href={launch?.links.presskit}>
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        slot="before"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-file-type-pdf w-auto h-6"
+                    >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                        <path d="M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4" />
+                        <path d="M5 18h1.5a1.5 1.5 0 0 0 0 -3h-1.5v6" />
+                        <>
+                            <path d="M17 18h2" />
+                            <path d="M20 15h-3v6" />
+                        </>
+                        <path d="M11 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z" />
+                    </svg>
+                </HeaderButton>
+            )
+        }
     </div>
 </article>

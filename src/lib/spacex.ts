@@ -7,6 +7,27 @@ export const getLaunchById = async (id: string) => {
     return launch;
 }
 
+export const getLaunches = async () => {
+    const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            query: {},
+            options: {
+                sort: {
+                    date_unix: 'asc',
+                },
+            },
+        }),
+    });
+
+    const { docs: launches } = (await res.json()) as { docs: APISpaceXResponse[] };
+
+    return launches;
+}
+
 export const getLaunchesOrderedBy = async (order: string) => {
     const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
         method: "POST",
