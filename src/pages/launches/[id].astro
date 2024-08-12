@@ -1,6 +1,7 @@
 ---
 import type { Doc } from "../../types/api";
 import { getLaunches, getLaunchById } from "../../lib/spacex";
+import {getLocalLaunches} from '../../lib/spacex-local';
 import Layout from "../../layouts/Layout.astro";
 import HeaderButton from "../../components/HeaderButton.astro";
 
@@ -13,8 +14,6 @@ if (id) {
 }
 
 let launches = await getLaunches();
-
-console.log(launches);
 
 export async function getStaticPaths() {
     let launches = await getLaunches();

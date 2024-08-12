@@ -6,8 +6,11 @@ interface Props {
 
 import { getLaunchesOrderedBy } from "../lib/spacex";
 import { getLaunchesByPage } from "../lib/spacex";
+import { localLaunches } from "../types/api.ts";
 import type { APISpaceXResponse } from "../types/api";
 import CardLaunch from "./CardLaunch.astro";
+
+const localL = localLaunches;
 
 const { page, order } = Astro.props as Props;
 
@@ -25,9 +28,7 @@ if (page === -1) {
 ---
 
 <article class="flex flex-col">
-  <div
-    class="grid w-[100%] gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-  >
+  <div class="grid w-[100%] gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     {
       launches.map((launch) => (
         <CardLaunch
