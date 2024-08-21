@@ -44,7 +44,7 @@ git clone https://github.com/yourusername/space-launches.git
   npm run dev
   ```
 
-##Usage
+## Usage
 
 Once the application is running, you can access it by navigating to http://localhost:4321 in your web browser. The homepage will display a list of upcoming SpaceX launches. You can click on any launch to view more detailed information. You can also sort by latest and oldest
 ![Screen Shot 2024-08-12 at 6 25 34 PM](https://github.com/user-attachments/assets/22e6fdaa-0361-4825-955b-946e268f8211)
